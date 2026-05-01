@@ -6,10 +6,6 @@ pipeline {
         timeout(time: 300, unit: 'SECONDS')
         disableConcurrentBuilds()
     }
-
-    pipeline {
-    agent any
-
     parameters {
         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Name')
         text(name: 'BIOGRAPHY', defaultValue: '', description: 'Info')
