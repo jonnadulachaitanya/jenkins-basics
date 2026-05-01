@@ -4,6 +4,7 @@ pipeline {
     }
     options {
         timeout(time: 300, unit: 'SECONDS')
+        disableConcurrentBuilds()
     }
 
     stages {
@@ -29,22 +30,22 @@ pipeline {
           }
         }
     }
-    // post {
-    //     always{
-    //         echo "This sections runs always"
-    //         deleteDir()
-    //     }
-    //     success {
-    //         echo "Build Successful"
-    //     }
-    //     failure {
-    //         echo "Build Failed"
-    //     }
-    //     unstable {
-    //         echo "Build Unstable"
-    //     }
-    //     changed {
-    //         echo "Status changed from previous build"
-    //     }
-    // }
+    post {
+        always{
+            echo "This sections runs always"
+            deleteDir()
+        }
+        success {
+            echo "Build Successful"
+        }
+        failure {
+            echo "Build Failed"
+        }
+        unstable {
+            echo "Build Unstable"
+        }
+        changed {
+            echo "Status changed from previous build"
+        }
+    }
 }
