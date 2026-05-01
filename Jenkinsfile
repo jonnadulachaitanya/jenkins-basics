@@ -33,6 +33,7 @@ pipeline {
                 echo "Password received securely"
             }
         }
+
         stage('Approval') {
           input {
               message "Should we continue?"
