@@ -7,7 +7,37 @@ pipeline {
         disableConcurrentBuilds()
     }
 
+    pipeline {
+    agent any
+
+    parameters {
+        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Name')
+        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Info')
+        booleanParam(name: 'DEPLOY', defaultValue: true, description: 'Deploy app?')
+        choice(name: 'ENV', choices: ['dev', 'qa', 'prod'], description: 'Environment')
+        password(name: 'PASSWORD', defaultValue: '', description: 'Secret')
+    }
+
     stages {
+        stage('Use Parameters') {
+            steps {
+                echo "Hello ${params.PERSON}"
+                echo "Environment: ${params.ENV}"
+
+                script {
+                    if (params.DEPLOY) {
+                        echo "Deployment enabled"
+                    } else {
+                        echo "Deployment skipped"
+                    }
+                }
+
+                echo "Bio: ${params.BIOGRAPHY}"
+
+                // NEVER print password
+                echo "Password received securely"
+            }
+        }
         stage('Build') {
           steps {
             script {
