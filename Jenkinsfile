@@ -56,6 +56,7 @@ pipeline {
           }
         }
     }
+
     post {
         always{
             echo "This sections runs always"
