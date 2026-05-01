@@ -13,7 +13,6 @@ pipeline {
         choice(name: 'ENV', choices: ['dev', 'qa', 'prod'], description: 'Environment')
         password(name: 'PASSWORD', defaultValue: '', description: 'Secret')
     }
-
     stages {
         stage('Use Parameters') {
             steps {
