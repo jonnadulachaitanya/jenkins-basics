@@ -61,6 +61,9 @@ pipeline {
           }
         }
         stage('Deploy') {
+          when {
+                expression { env.BRANCH_NAME == 'main' }
+          }
           steps {
             script {
               sh 'echo this is deploy'
