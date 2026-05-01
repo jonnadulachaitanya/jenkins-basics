@@ -62,7 +62,7 @@ pipeline {
         }
         stage('Deploy') {
           when {
-                expression { env.BRANCH_NAME == 'origin/main' }
+                expression { env.GIT_BRANCH?.contains('main') }
           }
           steps {
             script {
