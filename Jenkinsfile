@@ -62,7 +62,7 @@ pipeline {
         }
         stage('Deploy') {
           when {
-                expression { BRANCH_NAME == 'main' }
+                expression { env.BRANCH_NAME == 'origin/main' }
           }
           steps {
             script {
